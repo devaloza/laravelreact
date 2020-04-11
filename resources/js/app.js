@@ -4,7 +4,7 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -12,23 +12,22 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import React from "react";
+import { render } from "react-dom";
+import { Router, Route, browserHistory } from "react-router";
 
-
-import MasterProduct from './components/MasterProduct';
-import CreateProduct from './components/CreateProduct';
-import DisplayProduct from './components/DisplayProduct';
-import UpdateProduct from './components/UpdateProduct';
-
+import Master from "./components/Master";
+import CreateProduct from "./components/CreateProduct";
+import DisplayProduct from "./components/DisplayProduct";
+import UpdateProduct from "./components/UpdateProduct";
 
 render(
   <Router history={browserHistory}>
-      <Route path="/" component={MasterProduct} >
-        <Route path="/add-item" component={CreateProduct} />
-        <Route path="/display-item" component={DisplayProduct} />
-        <Route path="/edit/:id" component={UpdateProduct} />
-      </Route>
-    </Router>,
-        document.getElementById('crud-app'));
+    <Route path="/" component={Master}>
+      <Route path="/add-item" component={CreateProduct} />
+      <Route path="/display-item" component={DisplayProduct} />
+      <Route path="/edit/:id" component={UpdateProduct} />
+    </Route>
+  </Router>,
+  document.getElementById("crud-app")
+);

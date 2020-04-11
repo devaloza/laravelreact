@@ -72737,7 +72737,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
-/* harmony import */ var _components_MasterProduct__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/MasterProduct */ "./resources/js/components/MasterProduct.js");
+/* harmony import */ var _components_Master__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Master */ "./resources/js/components/Master.js");
 /* harmony import */ var _components_CreateProduct__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/CreateProduct */ "./resources/js/components/CreateProduct.js");
 /* harmony import */ var _components_DisplayProduct__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/DisplayProduct */ "./resources/js/components/DisplayProduct.js");
 /* harmony import */ var _components_UpdateProduct__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/UpdateProduct */ "./resources/js/components/UpdateProduct.js");
@@ -72765,7 +72765,7 @@ Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED
   history: react_router__WEBPACK_IMPORTED_MODULE_2__["browserHistory"]
 }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/",
-  component: _components_MasterProduct__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _components_Master__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/add-item",
   component: _components_CreateProduct__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -72775,7 +72775,7 @@ Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/edit/:id",
   component: _components_UpdateProduct__WEBPACK_IMPORTED_MODULE_6__["default"]
-}))), document.getElementById('crud-app'));
+}))), document.getElementById("crud-app"));
 
 /***/ }),
 
@@ -72994,8 +72994,8 @@ var DisplayProduct = /*#__PURE__*/function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DisplayProduct).call(this, props));
     _this.state = {
-      value: '',
-      products: ''
+      value: "",
+      products: ""
     };
     return _this;
   }
@@ -73005,7 +73005,7 @@ var DisplayProduct = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_MyGlobleSetting__WEBPACK_IMPORTED_MODULE_4__["default"].url + '/api/products').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_MyGlobleSetting__WEBPACK_IMPORTED_MODULE_4__["default"].url + "/api/products").then(function (response) {
         _this2.setState({
           products: response.data
         });
@@ -73018,7 +73018,11 @@ var DisplayProduct = /*#__PURE__*/function (_Component) {
     value: function tabRow() {
       if (this.state.products instanceof Array) {
         return this.state.products.map(function (object, i) {
-          return;
+          console.log(i);
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TableRow__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: object.id
+          });
         });
       }
     }
@@ -73048,10 +73052,10 @@ var DisplayProduct = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/MasterProduct.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/MasterProduct.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/Master.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Master.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73081,16 +73085,16 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var MasterProduct = /*#__PURE__*/function (_Component) {
-  _inherits(MasterProduct, _Component);
+var Master = /*#__PURE__*/function (_Component) {
+  _inherits(Master, _Component);
 
-  function MasterProduct() {
-    _classCallCheck(this, MasterProduct);
+  function Master() {
+    _classCallCheck(this, Master);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MasterProduct).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Master).apply(this, arguments));
   }
 
-  _createClass(MasterProduct, [{
+  _createClass(Master, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73116,10 +73120,10 @@ var MasterProduct = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return MasterProduct;
+  return Master;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (MasterProduct);
+/* harmony default export */ __webpack_exports__["default"] = (Master);
 
 /***/ }),
 
@@ -73188,6 +73192,7 @@ var TableRow = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, TableRow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TableRow).call(this, props));
+    console.log(props);
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -73198,7 +73203,7 @@ var TableRow = /*#__PURE__*/function (_Component) {
       event.preventDefault();
       var uri = _MyGlobleSetting__WEBPACK_IMPORTED_MODULE_2__["default"].url + "/api/products/".concat(this.props.obj.id);
       axios["delete"](uri);
-      react_router__WEBPACK_IMPORTED_MODULE_1__["browserHistory"].push('/display-item');
+      react_router__WEBPACK_IMPORTED_MODULE_1__["browserHistory"].push("/display-item");
     }
   }, {
     key: "render",
@@ -73385,8 +73390,8 @@ var UpdateProduct = /*#__PURE__*/function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/deval_oza/htdocs/laravel+react/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/deval_oza/htdocs/laravel+react/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\projects\laravelreact\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\projects\laravelreact\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

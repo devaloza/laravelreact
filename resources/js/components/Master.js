@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Router, Route, Link } from 'react-router';
 
 
-class MasterProduct extends Component {
+class Master extends Component {
   render(){
     return (
       <div className="container">
@@ -25,4 +25,4 @@ class MasterProduct extends Component {
     )
   }
 }
-export default MasterProduct;
+export default Master;
